@@ -10,7 +10,7 @@ import {createLogger} from "redux-logger";
 import thunk from "redux-thunk";
 
 import Reducer from "./reducers";
-import initialState from './utils/data'
+const initialState={};
 
 const logger = createLogger({timestamp: true})
 

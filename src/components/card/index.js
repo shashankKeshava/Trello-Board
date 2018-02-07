@@ -1,14 +1,33 @@
-import React from 'react';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import React, {Component} from 'react';
+import {
+  Card,
+  CardActions,
+  CardHeader,
+  CardMedia,
+  CardTitle,
+  CardText
+} from 'material-ui/Card';
 
 import './card.css'
 
-const CardExampleWithAvatar = () => (
-    <Card className="card">
-      <CardText>
-        {this.props.payload}
-      </CardText>
-    </Card>
-  );
+class CardExampleWithAvatar extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      data:this.props.payload
+    }
+  }
 
-  export default CardExampleWithAvatar;
+  render() {
+    console.log(this.state.data);
+    return (
+      <Card className="card">
+        <CardText>
+          {this.state.data}
+        </CardText>
+      </Card>
+    )
+  }
+}
+
+export default CardExampleWithAvatar;

@@ -13,17 +13,24 @@ import {updateBoard, addCard} from '../actions';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state={
+      data:this.props.data
+    }
+  }
   render() {
+    console.log('Updated',this.state.data);
     return (
       <div className="App">
         <MuiThemeProvider>
           <div>
             <AppBar
-              title={this.props.header}
+              title={"Nutanix Trello Board"}
               showMenuIconButton={false}
               className={"App-Header"}
-              iconElementRight={< Dialog __addCard = {(payload)=>
-              this
+              iconElementRight={< Dialog __addCard = {
+              (payload) => this
                 .props
                 .addCard(payload)
             } />}/>
@@ -36,7 +43,8 @@ class App extends Component {
 }
 
 const mapToStateToProps = state => {
-  return {header: state.header, data: state.payload}
+  console.log('State',state);
+  return { data: state}
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
