@@ -28,12 +28,13 @@ export default class ListCard extends Component {
             data: this.props.payload
         }
     }
+
     render() {
         const Cards = this
             .state
             .data
-            .map(card => {
-                return <Card payload={card}/>
+            .map((card,index)=> {
+                return <Card payload={card} key={index} status={this.props.header} index={index}/>
             })
 
         return (

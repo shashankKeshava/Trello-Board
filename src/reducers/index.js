@@ -7,17 +7,27 @@ const trelloBoard = (prevState = initialState, action) => {
     let board = [];
     let status = null;
     let msg = null;
+    let index = null;
+    let newData = null;
     switch (action.type) {
         case ADD_CARD:
             {
                 status = get(action, 'payload.dropDown', 'Todo');
                 msg = get(action, 'payload.textArea', 'Dummy');
-                const newData=prevState;
+                newData = prevState;
                 newData[status].push(msg)
-                return Object.assign({},initialState, prevState,newData);
+                return Object.assign({}, initialState, prevState, newData);
+            }
+        case REMOVE_CARD:
+            {
+                status = get(action, 'status');
+                index = get(action, 'index');
+                newData = prevState;
+                newData[status].splice(index, 1);
+                return Object.assign({}, initialState, prevState, newData);
             }
         default:
-            return Object.assign({},initialState, prevState);
+            return Object.assign({}, initialState, prevState);
     }
 
 }

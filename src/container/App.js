@@ -8,7 +8,7 @@ import AppBar from 'material-ui/AppBar';
 import List from '../components/list/';
 import Dialog from '../components/dialog/'
 
-import {updateBoard, addCard} from '../actions';
+import {updateBoard, addCard,removeCard} from '../actions';
 
 import './App.css';
 
@@ -33,8 +33,9 @@ class App extends Component {
               (payload) => this
                 .props
                 .addCard(payload)
-            } />}/>
-            <List payload={this.props.data}/>
+            }
+            />}/>
+            <List payload={this.props.data} deleteCard={(status,index)=>this.props.removeCard(status,index)}/>
           </div>
         </MuiThemeProvider>
       </div>
@@ -49,7 +50,8 @@ const mapToStateToProps = state => {
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   updateBoard,
-  addCard
+  addCard,
+  removeCard
 }, dispatch)
 
 const appVisibility = connect(mapToStateToProps, mapDispatchToProps)(App);
