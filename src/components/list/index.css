@@ -1,8 +1,9 @@
 .list-group {
-    justify-content: 'space-evenly';
+    display: flex;
+    justify-content: space-between;
 }
 .list {
-    width: 400;
+    flex:1;
     margin: 20;
     display: 'inline-block';
     background-color: #e3e4e6;

@@ -2,3 +2,25 @@
     margin: 5px 15px 5px 15px;
     /* cursor: move; */
 }
+
+.cardMsg{
+    word-wrap: break-word;
+}
+
+.cardUpDown .cardLeftRight{float: right;}
+
+.card-top{
+    transform: rotate(-90deg);
+    float: right;
+}
+.card-down{
+    transform: rotate(90deg);
+    float: right;
+}
+.card-left{
+    float: right;
+}
+.card-right{
+        transform: rotate(180deg);
+        float: right;
+}

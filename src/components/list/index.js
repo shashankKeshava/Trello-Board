@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
+
 
 import List from './list'
-
 import './index.css'
 
-export default class Group extends Component {
+class Group extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -16,11 +18,11 @@ export default class Group extends Component {
         const Items = Object
             .keys(this.state.payload)
             .map(item => {
-                return <List
+                return <div style={{flex:1,margin: 20,maxWidth: "33%",}}><List
                     header={item}
                     key={item}
                     payload={this.state.payload[item]}
-                    />
+                    /></div>
             })
         return (
             <div className="list-group">
@@ -30,3 +32,5 @@ export default class Group extends Component {
 
     }
 }
+
+export default DragDropContext(HTML5Backend)(Group)

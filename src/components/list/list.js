@@ -14,8 +14,7 @@ import Card from '../card/'
 import './index.css'
 
 const style = {
-    width: 400,
-    margin: 20,
+    width: '100%',
     display: 'inline-block',
     backgroundColor: "#e3e4e6",
     padding: "5px 5px 15px 5px"

@@ -72,8 +72,6 @@ export default class DialogWindow extends React.Component {
             <TextField
               hintText="Enter Text"
               floatingLabelText="Description"
-              multiLine={true}
-              rows={2}
               onChange={this.__textAreaChange}/>
           </form>
         </Dialog>

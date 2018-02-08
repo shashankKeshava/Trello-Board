@@ -7,10 +7,11 @@ import TextField from 'material-ui/TextField';
 
 import Delete from 'material-ui-icons/DeleteForever';
 import Edit from 'material-ui-icons/ModeEdit';
+import PlayArrow from 'material-ui-icons/PlayArrow'
 import {red500, blue500} from 'material-ui/styles/colors';
 
 import {connect} from 'react-redux';
-import {removeCard, editCard} from '../../actions'
+import {removeCard, editCard,moveCardVertical} from '../../actions'
 
 import './card.css'
 
@@ -35,8 +36,19 @@ class CardExampleWithAvatar extends Component {
     this.setState({open: true});
   };
 
+  handleClose = () => {
+    this.setState({open: false});
+  };
   __textAreaChange = (e) => {
     this.setState({msg: e.target.value})
+  }
+
+  __moveCardHorizontal=(currPos,nextPos)=>{
+  console.log(currPos,nextPos);
+  }
+
+  __moveCardVertical=(currPos,nextPos)=>{
+    console.log(currPos,nextPos);
   }
 
   render() {
@@ -72,9 +84,12 @@ class CardExampleWithAvatar extends Component {
             rows={2}
             onChange={this.__textAreaChange}/>
         </Dialog>
-
         <Card className="card">
-          <CardText>
+        <CardActions>
+        <PlayArrow className={"card-top"} onClick={()=>dispatch(moveCardVertical(this.props.status,this.props.index,this.props.index-1))}/>
+        <PlayArrow className={"card-down"} onClick={()=>dispatch(moveCardVertical(this.props.status,this.props.index,this.props.index+1))}/>
+        </CardActions>
+          <CardText className="cardMsg">
             {this.props.payload}
           </CardText>
           <CardActions>
@@ -83,6 +98,8 @@ class CardExampleWithAvatar extends Component {
               color={red500}
               onClick={() => dispatch(removeCard(this.props.status, this.props.index))}/>
             <Edit className={"card-edit"} color={blue500} onClick={this.handleOpen}/>
+            <PlayArrow className={"card-left"}/>
+            <PlayArrow className={"card-right"}/>
           </CardActions>
         </Card>
       </div>
