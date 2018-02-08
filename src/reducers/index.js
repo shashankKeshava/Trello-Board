@@ -32,7 +32,7 @@ const trelloBoard = (prevState = initialState, action) => {
                 index = get(action, 'index');
                 msg = get(action, 'msg');
                 newData = prevState;
-                newData[status].splice(index, 0, msg);
+                newData[status].splice(index, 1, msg);
                 return Object.assign({}, initialState, newData);
             }
         default:

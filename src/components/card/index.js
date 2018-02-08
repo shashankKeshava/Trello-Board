@@ -25,6 +25,12 @@ class CardExampleWithAvatar extends Component {
     }
   }
 
+  handleSubmit=()=>{
+    const {dispatch,status,index} = this.props;
+    this.setState({open: false});
+    dispatch(editCard(status, index, this.state.msg));
+  }
+
   handleOpen = () => {
     this.setState({open: true});
   };
@@ -47,10 +53,7 @@ class CardExampleWithAvatar extends Component {
         true
       }
       onClick = {
-        () => {
-          dispatch(editCard(status, index, msg));
-          this.setState({open: false});
-        }
+        () => this.handleSubmit()
       } />
     ];
 

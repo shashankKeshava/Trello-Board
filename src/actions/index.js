@@ -9,7 +9,7 @@ export function removeCard(status, index) {
 }
 
 export function editCard(status, index, msg) {
-    return dispatch => ({type: EDIT_CARD, status, index, msg})
+    return dispatch => dispatch({type: EDIT_CARD, status, index, msg})
 }
 
 export const updateBoard = (type = "ADDCARD", payload) => dispatch => {
