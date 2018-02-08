@@ -2,7 +2,6 @@ import { get } from 'lodash';
 
 import {
     ADD_CARD,
-    UPDATE_BOARD,
     REMOVE_CARD,
     EDIT_CARD,
     MOVE_HORIZONTAL,
@@ -52,6 +51,26 @@ const trelloBoard = (prevState = initialState, action) => {
                 return Object.assign({}, initialState, prevState);
             msg = newData[status].splice(currPos, 1);
             newData[status].splice(nextPos, 0, msg[0]);
+            return Object.assign({}, initialState, newData);
+        }
+        case MOVE_HORIZONTAL: {
+            let prevStatus = get(action, 'prevStatus');
+            let nextStatus = get(action, 'nextStatus');
+            let next = get(action, 'pos');
+            index = get(action, 'index');
+            status = get(action, 'status');
+            newData = prevState;
+            if (next == 'right' && !nextStatus)
+                return Object.assign({}, initialState, prevState);
+            if (next == 'left' && !prevStatus)
+                return Object.assign({}, initialState, prevState);
+            if (next == 'right') {
+                msg = newData[status].splice(index, 1);
+                newData[nextStatus].push(msg[0]);
+            } else {
+                msg = newData[status].splice(index, 1);
+                newData[prevStatus].push(msg[0]);
+            }
             return Object.assign({}, initialState, newData);
         }
         default:

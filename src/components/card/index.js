@@ -2,16 +2,15 @@ import React, {Component} from 'react';
 import {Card, CardText, CardActions} from 'material-ui/Card';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
 import Delete from 'material-ui-icons/DeleteForever';
 import Edit from 'material-ui-icons/ModeEdit';
 import PlayArrow from 'material-ui-icons/PlayArrow'
-import {red500, blue500} from 'material-ui/styles/colors';
+import {red500, blue500,lime700} from 'material-ui/styles/colors';
 
 import {connect} from 'react-redux';
-import {removeCard, editCard,moveCardVertical} from '../../actions'
+import {removeCard, editCard,moveCardVertical,moveCardHorizontal} from '../../actions'
 
 import './card.css'
 
@@ -43,19 +42,13 @@ class CardExampleWithAvatar extends Component {
     this.setState({msg: e.target.value})
   }
 
-  __moveCardHorizontal=(currPos,nextPos)=>{
-  console.log(currPos,nextPos);
-  }
-
-  __moveCardVertical=(currPos,nextPos)=>{
-    console.log(currPos,nextPos);
-  }
-
   render() {
     const {dispatch} = this.props;
     const msg=this.state.msg;
-    const status=this.props.status;
     const index= this.props.index;
+    const status=['Todo','In Progress','Done'];
+    const prevStatus=((status.indexOf(this.props.status))-1)>=0?status[((status.indexOf(this.props.status))-1)]:false;
+    const nextStatus=((status.indexOf(this.props.status))+1)<=2?status[((status.indexOf(this.props.status))+1)]:false;
     const actions = [ < FlatButton label = "Cancel" primary = {
         true
       }
@@ -98,8 +91,8 @@ class CardExampleWithAvatar extends Component {
               color={red500}
               onClick={() => dispatch(removeCard(this.props.status, this.props.index))}/>
             <Edit className={"card-edit"} color={blue500} onClick={this.handleOpen}/>
-            <PlayArrow className={"card-left"}/>
-            <PlayArrow className={"card-right"}/>
+            <PlayArrow className={"card-right"} color={lime700} onClick={()=>dispatch(moveCardHorizontal(prevStatus,nextStatus,'right',this.props.index,this.props.status))}/>
+            <PlayArrow className={"card-left"} color={lime700} onClick={()=>dispatch(moveCardHorizontal(prevStatus,nextStatus,'left',this.props.index,this.props.status))}/>
           </CardActions>
         </Card>
       </div>

@@ -8,9 +8,14 @@ import AppBar from 'material-ui/AppBar';
 import List from '../components/list/';
 import Dialog from '../components/dialog/';
 
-import { updateBoard, addCard, removeCard } from '../actions';
+import { addCard, removeCard } from '../actions';
 
 import './App.css';
+
+const style={
+    justifyContent: 'center',
+  backgroundColor: '#246aa0'
+}
 class App extends Component {
     constructor(props) {
         super(props);
@@ -19,7 +24,6 @@ class App extends Component {
         };
     }
     render() {
-        console.log('Updated', this.state.data);
         return (
             <div className="App">
                 <MuiThemeProvider>
@@ -27,7 +31,7 @@ class App extends Component {
                         <AppBar
                             title={'Trello Board'}
                             showMenuIconButton={false}
-                            className={'App-Header'}
+                            style={style}
                             iconElementRight={
                                 <Dialog
                                     __addCard={payload =>
@@ -59,7 +63,6 @@ const mapToStateToProps = state => {
 const mapDispatchToProps = dispatch =>
     bindActionCreators(
         {
-            updateBoard,
             addCard,
             removeCard,
         },

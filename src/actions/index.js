@@ -1,6 +1,5 @@
 import {
     ADD_CARD,
-    UPDATE_BOARD,
     REMOVE_CARD,
     EDIT_CARD,
     MOVE_VERTICAL,
@@ -19,11 +18,13 @@ export function editCard(status, index, msg) {
     return dispatch => dispatch({ type: EDIT_CARD, status, index, msg });
 }
 
-export function moveCardVertical(status,currPos, nextPos) {
+export function moveCardVertical(status, currPos, nextPos) {
     return dispatch =>
         dispatch({ type: MOVE_VERTICAL, status, currPos, nextPos });
 }
 
-export const updateBoard = (type = 'ADDCARD', payload) => dispatch => {
-    return dispatch({ type, payload });
-};
+export function moveCardHorizontal(prevStatus, nextStatus, pos,index,status) {
+    return dispatch =>
+        dispatch({ type: MOVE_HORIZONTAL, prevStatus, nextStatus, pos,index,status });
+}
+

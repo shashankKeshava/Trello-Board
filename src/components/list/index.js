@@ -1,7 +1,4 @@
 import React, {Component} from 'react';
-import { DragDropContext } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
-
 
 import List from './list'
 import './index.css'
@@ -33,4 +30,4 @@ class Group extends Component {
     }
 }
 
-export default DragDropContext(HTML5Backend)(Group)
+export default Group

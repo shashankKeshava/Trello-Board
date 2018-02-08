@@ -18,9 +18,10 @@
     float: right;
 }
 .card-left{
+    transform: rotate(180deg);
     float: right;
 }
 .card-right{
-        transform: rotate(180deg);
+       
         float: right;
 }
