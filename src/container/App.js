@@ -26,7 +26,7 @@ class App extends Component {
         <MuiThemeProvider>
           <div>
             <AppBar
-              title={"Nutanix Trello Board"}
+              title={"Trello Board"}
               showMenuIconButton={false}
               className={"App-Header"}
               iconElementRight={< Dialog __addCard = {

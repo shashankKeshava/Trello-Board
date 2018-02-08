@@ -16,18 +16,14 @@ import './card.css'
 class CardExampleWithAvatar extends Component {
   constructor(props){
     super(props);
-    this.state={
-      data:this.props.payload
-    }
   }
 
   render() {
-    console.log(this.state.data);
     const {dispatch}=this.props;
     return (
       <Card className="card">
         <CardText>
-          {this.state.data}
+          {this.props.payload}
         </CardText>
         <CardActions>
         <Delete  className={"card-delete"} color={red500} onClick={()=>dispatch(removeCard(this.props.status,this.props.index))}/>
