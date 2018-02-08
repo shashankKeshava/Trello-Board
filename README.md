@@ -9,4 +9,4 @@ Live URL: https://shashankkeshava.github.io/Trello-Board/
 
 `yarn start`
 
-Development Branch : (develop)[https://github.com/shashankKeshava/Trello-Board/tree/develop]
+Development Branch : [develop](https://github.com/shashankKeshava/Trello-Board/tree/develop)
