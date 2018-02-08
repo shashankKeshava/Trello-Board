@@ -1,6 +1,6 @@
 import {get} from 'lodash'
 
-import {ADD_CARD, UPDATE_BOARD, REMOVE_CARD} from '../utils/actionTypes'
+import {ADD_CARD, UPDATE_BOARD, REMOVE_CARD, EDIT_CARD} from '../utils/actionTypes'
 import initialState from '../utils/data'
 
 const trelloBoard = (prevState = initialState, action) => {
@@ -24,6 +24,15 @@ const trelloBoard = (prevState = initialState, action) => {
                 index = get(action, 'index');
                 newData = prevState;
                 newData[status].splice(index, 1);
+                return Object.assign({}, initialState, newData);
+            }
+        case EDIT_CARD:
+            {
+                status = get(action, 'status');
+                index = get(action, 'index');
+                msg = get(action, 'msg');
+                newData = prevState;
+                newData[status].splice(index, 0, msg);
                 return Object.assign({}, initialState, newData);
             }
         default:
