@@ -29,7 +29,7 @@ class App extends Component {
                 <MuiThemeProvider>
                     <div>
                         <AppBar
-                            title={'Trello Board'}
+                            title={'Nutanix Trello Board'}
                             showMenuIconButton={false}
                             style={style}
                             iconElementRight={
