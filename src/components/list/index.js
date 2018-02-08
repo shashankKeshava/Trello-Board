@@ -14,8 +14,8 @@ class Group extends Component {
     render() {
         const Items = Object
             .keys(this.state.payload)
-            .map(item => {
-                return <div style={{flex:1,margin: 20,maxWidth: "33%",}}><List
+            .map((item,index) => {
+                return <div style={{flex:1,margin: 20,maxWidth: "33%",}} key={index}><List
                     header={item}
                     key={item}
                     payload={this.state.payload[item]}

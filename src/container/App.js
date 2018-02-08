@@ -29,7 +29,7 @@ class App extends Component {
                 <MuiThemeProvider>
                     <div>
                         <AppBar
-                            title={'Trello Board'}
+                            title={'Nutanix Trello Board'}
                             showMenuIconButton={false}
                             style={style}
                             iconElementRight={
@@ -54,8 +54,9 @@ class App extends Component {
 }
 
 const mapToStateToProps = state => {
-    localStorage.setItem('trello', JSON.stringify(state));
-    let prevState = JSON.parse(localStorage.getItem('trello'));
+    sessionStorage.setItem('trello', JSON.stringify(state));
+    let prevState = JSON.parse(sessionStorage.getItem('trello'));
+    // console.log(prevState);
 
     return { data: state };
 };

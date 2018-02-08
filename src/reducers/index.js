@@ -10,7 +10,6 @@ import {
 import initialState from '../utils/data';
 
 const trelloBoard = (prevState = initialState, action) => {
-    let board = [];
     let status = null;
     let msg = null;
     let index = null;
@@ -60,11 +59,11 @@ const trelloBoard = (prevState = initialState, action) => {
             index = get(action, 'index');
             status = get(action, 'status');
             newData = prevState;
-            if (next == 'right' && !nextStatus)
+            if (next === 'right' && !nextStatus)
                 return Object.assign({}, initialState, prevState);
-            if (next == 'left' && !prevStatus)
+            if (next === 'left' && !prevStatus)
                 return Object.assign({}, initialState, prevState);
-            if (next == 'right') {
+            if (next === 'right') {
                 msg = newData[status].splice(index, 1);
                 newData[nextStatus].push(msg[0]);
             } else {
